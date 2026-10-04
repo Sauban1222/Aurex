@@ -102,11 +102,11 @@ No screenshot files are currently included in the project. To capture the curren
 
 ## Live Demo
 
-There is no hosted demo configured. Run `npm run dev` to view the app locally at the Vite URL (usually `http://localhost:5173/`).
+GitHub Pages deployment target: [https://sauban1222.github.io/Aurex/](https://sauban1222.github.io/Aurex/). After pushing the deployment workflow, set the repository's **Settings → Pages → Build and deployment → Source** to **GitHub Actions**. The workflow builds the Vite app and deploys `dist/`.
 
 ## GitHub Repository
 
-No GitHub repository URL is configured for this local project.
+Source code: [https://github.com/Sauban1222/Aurex](https://github.com/Sauban1222/Aurex).
 
 ## Author
 
