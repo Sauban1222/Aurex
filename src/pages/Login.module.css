@@ -1,0 +1,352 @@
+.page {
+  min-height: 100vh;
+  padding: 0 6vw;
+  color: #f1f2f7;
+  background:
+    radial-gradient(ellipse at 17% 67%, rgba(202, 190, 154, .08), transparent 38%),
+    #161827;
+}
+
+.topbar {
+  height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(218, 222, 245, .08);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #f1f2f8;
+  font: 800 14px Manrope, sans-serif;
+  letter-spacing: .025em;
+}
+
+.brandMark {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px 10px 10px 3px;
+  background: #d7c797;
+  color: #272a38;
+  font-size: 16px;
+  transform: rotate(-5deg);
+}
+
+.brandLight {
+  margin-left: 5px;
+  color: #9a9dad;
+  font-weight: 500;
+  letter-spacing: -.02em;
+}
+
+.backLink {
+  color: #d6c38d;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.layout {
+  width: min(100%, 1020px);
+  min-height: calc(100vh - 146px);
+  display: grid;
+  grid-template-columns: 1fr minmax(360px, 440px);
+  align-items: center;
+  gap: clamp(50px, 9vw, 130px);
+  margin: 0 auto;
+  padding: 55px 0;
+}
+
+.intro {
+  max-width: 420px;
+}
+
+.eyebrow, .formEyebrow {
+  color: #c9b57b;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .17em;
+}
+
+.intro h1 {
+  max-width: 400px;
+  margin: 18px 0 13px;
+  font: 600 clamp(36px, 4vw, 52px)/1.08 Manrope, sans-serif;
+  letter-spacing: -.06em;
+}
+
+.intro > p, .formCopy {
+  color: #a4a6b5;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.intro > p {
+  max-width: 355px;
+  margin-bottom: 40px;
+}
+
+.rewardCard {
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 340px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 22px;
+  border: 1px solid rgba(202, 190, 154, .16);
+  border-radius: 15px;
+  background: linear-gradient(135deg, #292d40, #202333 75%);
+  box-shadow: 0 15px 35px rgba(5, 7, 17, .18);
+}
+
+.cardLabel {
+  color: #b0b1bf;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .13em;
+}
+
+.rewardCard strong {
+  z-index: 1;
+  font: 700 36px Manrope, sans-serif;
+  letter-spacing: -.05em;
+}
+
+.rewardCard strong span {
+  color: #d7c797;
+  font-size: 15px;
+}
+
+.cardFoot {
+  color: #b0b1bf;
+  font-size: 11px;
+}
+
+.cardMark {
+  position: absolute;
+  top: -50px;
+  right: 4px;
+  color: rgba(230, 231, 238, .04);
+  font: 800 190px/1 Manrope, sans-serif;
+  transform: rotate(-12deg);
+}
+
+.formPanel {
+  padding: clamp(27px, 4vw, 42px);
+  border: 1px solid rgba(229, 233, 255, .09);
+  border-radius: 18px;
+  background: #1d1f2f;
+  box-shadow: 0 20px 60px rgba(5, 7, 17, .2);
+}
+
+.formPanel h2 {
+  margin: 12px 0 7px;
+  font: 600 27px Manrope, sans-serif;
+  letter-spacing: -.045em;
+}
+
+.formCopy {
+  margin-bottom: 28px;
+  font-size: 12px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.form label, .passwordLabel {
+  color: #e3e4eb;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.form input:not([type='checkbox']) {
+  width: 100%;
+  height: 46px;
+  padding: 0 13px;
+  border: 1px solid #393c50;
+  border-radius: 7px;
+  outline: none;
+  background: #181a29;
+  color: #f1f2f7;
+  font: inherit;
+  font-size: 12px;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.form input::placeholder {
+  color: #777b8d;
+}
+
+.form input:focus {
+  border-color: #c9b57b;
+  box-shadow: 0 0 0 3px rgba(201, 181, 123, .12);
+}
+
+.passwordLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 9px;
+}
+
+.passwordLabel button, .signup button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #d6c38d;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.passwordInput {
+  position: relative;
+}
+
+.passwordInput input {
+  padding-right: 58px !important;
+}
+
+.showPassword {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 46px;
+  padding: 0 13px;
+  border: 0;
+  background: none;
+  color: #c9b57b;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 9px;
+  color: #b8bac7 !important;
+  font-weight: 500 !important;
+}
+
+.remember input {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  accent-color: #c9b57b;
+}
+
+.submit {
+  height: 46px;
+  border: 0;
+  border-radius: 7px;
+  background: #d7c797;
+  color: #292c39;
+  font-size: 12px;
+  font-weight: 700;
+  transition: background .2s, transform .2s;
+}
+
+.submit:hover {
+  transform: translateY(-1px);
+  background: #e5d8b5;
+}
+
+.notice {
+  min-height: 16px;
+  margin: 3px 0 0;
+  color: #e2d5ad;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.signup {
+  margin: 14px 0 0;
+  color: #a4a6b5;
+  text-align: center;
+  font-size: 11px;
+}
+
+.signup button {
+  margin-left: 3px;
+  font-size: inherit;
+}
+
+.footer {
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 20px 0;
+  border-top: 1px solid rgba(218, 222, 245, .08);
+  color: #8b8e9f;
+  font-size: 10px;
+}
+
+.footer span {
+  color: #707487;
+}
+
+@media (max-width: 760px) {
+  .page {
+    padding: 0 22px;
+  }
+
+  .layout {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 440px;
+    padding: 48px 0;
+  }
+
+  .intro {
+    max-width: none;
+  }
+
+  .intro h1 {
+    max-width: 440px;
+    font-size: 39px;
+  }
+
+  .intro > p {
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+
+  .rewardCard {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .page {
+    padding: 0 17px;
+  }
+
+  .topbar {
+    height: 70px;
+  }
+
+  .layout {
+    padding: 38px 0;
+  }
+
+  .formPanel {
+    padding: 25px 21px;
+  }
+
+  .footer {
+    gap: 10px;
+    font-size: 9px;
+  }
+}

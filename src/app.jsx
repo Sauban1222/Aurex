@@ -6,6 +6,7 @@ import SwapCenterBanner from './components/SwapCenterBanner/SwapCenterBanner.jsx
 import BonusVEsBanner from './components/BonusVEsBanner/BonusVEsBanner.jsx'
 import CaptchaTasksBanner from './components/CaptchaTasksBanner/CaptchaTasksBanner.jsx'
 import ExchangeCenterBanner from './components/ExchangeCenterBanner/ExchangeCenterBanner.jsx'
+import LoginPage from './pages/Login.jsx'
 import { bannerFeatures } from './utils/bannerData.js'
 
 function Logo() {
@@ -16,8 +17,15 @@ function App() {
   const [dialog, setDialog] = useState(null)
   const [toast, setToast] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
+  const [isLoginPage, setIsLoginPage] = useState(window.location.hash === '#login')
   const dialogRef = useRef(null)
   const dialogTriggerRef = useRef(null)
+
+  useEffect(() => {
+    const syncPage = () => setIsLoginPage(window.location.hash === '#login')
+    window.addEventListener('hashchange', syncPage)
+    return () => window.removeEventListener('hashchange', syncPage)
+  }, [])
 
   const confirmTask = () => {
     setDialog(null)
@@ -68,6 +76,8 @@ function App() {
     }
   }, [dialog])
 
+  if (isLoginPage) return <LoginPage />
+
   return (
     <div id="home" className="app-shell">
       <header className="topbar">
@@ -80,7 +90,7 @@ function App() {
           </nav>
           <div className="header-actions">
             <button className="help-link" onClick={() => setToast('Our support team is here to help — support@veloop.com')}>Need help?</button>
-            <button className="profile-button" aria-label="Your profile" onClick={() => setToast('You’re viewing your rewards overview.')}>A</button>
+            <a className="login-link" href="#login">Log in</a>
           </div>
           <button className="mobile-menu" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}><Icon name="menu" /></button>
         </div>
