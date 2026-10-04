@@ -9,7 +9,7 @@ import ExchangeCenterBanner from './components/ExchangeCenterBanner/ExchangeCent
 import { bannerFeatures } from './utils/bannerData.js'
 
 function Logo() {
-  return <a className="brand" href="#home" aria-label="VELOOP Rewards home"><span className="brand-mark">V</span><span>VELOOP<span className="brand-light">rewards</span></span></a>
+  return <a className="brand" href="#home" aria-label="Aurex Rewards home"><span className="brand-mark">A</span><span>Aurex<span className="brand-light">rewards</span></span></a>
 }
 
 function App() {
@@ -94,7 +94,7 @@ function App() {
             <p className="welcome-copy">Make the most of every VE. Your next reward is closer than you think.</p>
           </div>
           <div className="balance-card">
-            <div className="balance-top"><span className="balance-label"><Icon name="wallet" size={16} /> YOUR VE BALANCE</span><button aria-label="Balance details" className="balance-more" onClick={() => setToast('Your VE balance is ready to use across VELOOP Rewards.')}>•••</button></div>
+            <div className="balance-top"><span className="balance-label"><Icon name="wallet" size={16} /> YOUR VE BALANCE</span><button aria-label="Balance details" className="balance-more" onClick={() => setToast('Your VE balance is ready to use across Aurex Rewards.')}>•••</button></div>
             <div className="balance-amount">1,260 <span>VEs</span></div>
             <div className="balance-footer"><span className="balance-change"><Icon name="arrowUp" size={13} /> 120 this week</span><span className="balance-footer-label">KEEP IT GOING</span></div>
             <span className="balance-watermark">V</span>
@@ -124,7 +124,7 @@ function App() {
           </div>
         </section>
 
-        <footer className="page-footer"><Logo /><span>Good things come around.</span><span className="footer-right">© 2026 VELOOP Rewards</span></footer>
+        <footer className="page-footer"><Logo /><span>Good things come around.</span><span className="footer-right">© 2026 Aurex Rewards</span></footer>
       </main>
 
       {dialog && activeContent && (
