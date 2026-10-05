@@ -1,0 +1,5 @@
+[build]
+  # Install dependencies when they aren't already present (e.g. CLI deploys
+  # from a fresh checkout) so the vite binary is always available.
+  command = "[ -x node_modules/.bin/vite ] || npm ci; npm run build"
+  publish = "dist"
