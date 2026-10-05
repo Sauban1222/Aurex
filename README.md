@@ -54,6 +54,10 @@ Open the local URL printed by Vite, usually `http://localhost:5173/`.
 | `npm run build` | Create the production build in `dist/`. |
 | `npm run preview` | Serve the production build locally after running the build command. |
 
+## Netlify Deployment
+
+Connect the GitHub repository to Netlify and deploy the `main` branch. The root `netlify.toml` configures Netlify to run `npm run build`, publish `dist/`, use Node.js 20, and build assets for the site root. If `VITE_BASE_PATH` is also set in the Netlify dashboard, remove it or set it to `/` so assets do not use the GitHub Pages `/Aurex/` path.
+
 ## Local Verification
 
 The app was run locally and checked in a browser from 320px through 1440px viewport widths, including mobile, tablet, and desktop sizes. All five banners rendered within their target card heights; keyboard activation opened each CTA dialog, and Escape dismissal restored focus. No browser console or page errors were reported during the smoke check. The production build completed successfully with `npm run build`.
