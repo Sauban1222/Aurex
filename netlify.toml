@@ -1,0 +1,4 @@
+[build]
+  # Install dependencies if they haven't been installed yet (node_modules is not committed)
+  command = "([ -x node_modules/.bin/vite ] || npm ci) && npm run build"
+  publish = "dist"
