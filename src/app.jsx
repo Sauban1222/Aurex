@@ -10,7 +10,7 @@ import LoginPage from './pages/Login.jsx'
 import { bannerFeatures } from './utils/bannerData.js'
 
 function Logo() {
-  return <a className="brand" href="#home" aria-label="Aurex Rewards home"><span className="brand-mark">A</span><span>Aurex<span className="brand-light">rewards</span></span></a>
+  return <a className="brand" href="#home" aria-label="Aurex Rewards home"><img className="brand-logo" src={`${import.meta.env.BASE_URL}aurex-symbol.jpg`} alt="" /><span className="brand-wordmark">Aurex<span>rewards</span></span></a>
 }
 
 function App() {
@@ -89,7 +89,7 @@ function App() {
             <a className="nav-link" href="#redeem" onClick={() => setMenuOpen(false)}>Redeem</a>
           </nav>
           <div className="header-actions">
-            <button className="help-link" onClick={() => setToast('Our support team is here to help — support@veloop.com')}>Need help?</button>
+            <button className="help-link" onClick={() => setToast('Our support team is here to help.')}>Need help?</button>
             <a className="login-link" href="#login">Log in</a>
           </div>
           <button className="mobile-menu" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}><Icon name="menu" /></button>
@@ -102,6 +102,7 @@ function App() {
             <div className="welcome-kicker"><span className="live-dot" /> YOUR REWARDS, IN MOTION</div>
             <h1 id="welcome-title">A little good goes <span>a long way.</span></h1>
             <p className="welcome-copy">Make the most of every VE. Your next reward is closer than you think.</p>
+            <a className="welcome-action" href="#earn">Explore opportunities <Icon name="arrow" size={16} /></a>
           </div>
           <div className="balance-card">
             <div className="balance-top"><span className="balance-label"><Icon name="wallet" size={16} /> YOUR VE BALANCE</span><button aria-label="Balance details" className="balance-more" onClick={() => setToast('Your VE balance is ready to use across Aurex Rewards.')}>•••</button></div>

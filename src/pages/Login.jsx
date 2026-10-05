@@ -4,27 +4,37 @@ import styles from './Login.module.css'
 function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [message, setMessage] = useState('')
+  const [isRegistering, setIsRegistering] = useState(false)
+  const logoSrc = `${import.meta.env.BASE_URL}aurex-symbol.jpg`
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    setMessage('Sign-in is not connected yet. Your details have not been sent.')
+    setMessage(isRegistering
+      ? 'Registration is a preview only. No account was created and your details were not sent or saved.'
+      : 'Sign-in is not connected yet. Your details have not been sent.')
+  }
+
+  const changeMode = (registering) => {
+    setIsRegistering(registering)
+    setMessage('')
+    setShowPassword(false)
   }
 
   return (
     <main className={styles.page}>
       <div className={styles.topbar}>
         <a className={styles.brand} href="#home" aria-label="Aurex Rewards home">
-          <span className={styles.brandMark}>A</span>
-          <span>Aurex<span className={styles.brandLight}>rewards</span></span>
+          <img className={styles.brandImage} src={logoSrc} alt="" />
+          <span className={styles.brandWordmark}>Aurex<span>rewards</span></span>
         </a>
         <a className={styles.backLink} href="#home">Back to rewards</a>
       </div>
 
-      <section className={styles.layout} aria-labelledby="login-title">
+      <section className={`${styles.layout} ${isRegistering ? styles.registerLayout : ''}`} aria-labelledby="login-title">
         <div className={styles.intro}>
-          <span className={styles.eyebrow}>WELCOME BACK</span>
-          <h1 id="login-title">Your rewards are waiting.</h1>
-          <p>Sign in to pick up where you left off and keep your rewards moving.</p>
+          <span className={styles.eyebrow}>{isRegistering ? 'JOIN AUREX' : 'WELCOME BACK'}</span>
+          <h1 id="login-title">{isRegistering ? 'Good things start here.' : 'Your rewards are waiting.'}</h1>
+          <p>{isRegistering ? 'Create your account to discover new ways to earn, swap, and redeem.' : 'Sign in to pick up where you left off and keep your rewards moving.'}</p>
           <div className={styles.rewardCard} aria-hidden="true">
             <span className={styles.cardLabel}>YOUR AUREX BALANCE</span>
             <strong>1,260 <span>VEs</span></strong>
@@ -34,55 +44,88 @@ function LoginPage() {
         </div>
 
         <div className={styles.formPanel}>
-          <span className={styles.formEyebrow}>YOUR ACCOUNT</span>
-          <h2>Log in to Aurex</h2>
-          <p className={styles.formCopy}>Enter your account details to continue.</p>
+          <span className={styles.formEyebrow}>{isRegistering ? 'CREATE YOUR ACCOUNT' : 'YOUR ACCOUNT'}</span>
+          <h2>{isRegistering ? 'Join Aurex' : 'Log in to Aurex'}</h2>
+          <p className={styles.formCopy}>{isRegistering ? 'Add your details to get started.' : 'Enter your account details to continue.'}</p>
           <form className={styles.form} onSubmit={handleSubmit}>
-            <label htmlFor="aurex-email">Email address</label>
-            <input
-              id="aurex-email"
-              name="email"
-              type="email"
-              autoComplete="email"
-              placeholder="you@example.com"
-              required
-            />
+            {isRegistering ? (
+              <div className={styles.registrationFields}>
+                <div className={styles.field}>
+                  <label htmlFor="aurex-full-name">Full name</label>
+                  <input id="aurex-full-name" name="name" type="text" autoComplete="name" placeholder="Your full name" maxLength={100} required />
+                </div>
+                <div className={styles.field}>
+                  <label htmlFor="aurex-username">Username</label>
+                  <input id="aurex-username" name="username" type="text" autoComplete="username" placeholder="Choose a username" minLength={3} maxLength={24} pattern="[A-Za-z0-9_]{3,24}" title="Use 3–24 letters, numbers, or underscores." required />
+                </div>
+                <div className={styles.field}>
+                  <label htmlFor="aurex-mobile">Mobile number</label>
+                  <input id="aurex-mobile" name="mobile" type="tel" autoComplete="tel" placeholder="+1 555 123 4567" minLength={7} maxLength={24} required />
+                </div>
+                <div className={styles.field}>
+                  <label htmlFor="aurex-register-email">Email address</label>
+                  <input id="aurex-register-email" name="email" type="email" autoComplete="email" placeholder="you@example.com" required />
+                </div>
+                <div className={`${styles.field} ${styles.fullWidth}`}>
+                  <label htmlFor="aurex-register-password">Password</label>
+                  <div className={styles.passwordInput}>
+                    <input id="aurex-register-password" name="password" type={showPassword ? 'text' : 'password'} autoComplete="new-password" placeholder="Create a password" minLength={8} required />
+                    <button
+                      className={styles.showPassword}
+                      type="button"
+                      aria-label={showPassword ? 'Hide password' : 'Show password'}
+                      aria-pressed={showPassword}
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? 'Hide' : 'Show'}
+                    </button>
+                  </div>
+                  <span className={styles.fieldHint}>Use at least 8 characters.</span>
+                </div>
+              </div>
+            ) : (
+              <>
+                <div className={styles.field}>
+                  <label htmlFor="aurex-email">Email address</label>
+                  <input id="aurex-email" name="email" type="email" autoComplete="email" placeholder="you@example.com" required />
+                </div>
 
-            <div className={styles.passwordLabel}>
-              <label htmlFor="aurex-password">Password</label>
-              <button type="button" onClick={() => setMessage('Password reset is not available in this preview.')}>
-                Forgot password?
-              </button>
-            </div>
-            <div className={styles.passwordInput}>
-              <input
-                id="aurex-password"
-                name="password"
-                type={showPassword ? 'text' : 'password'}
-                autoComplete="current-password"
-                placeholder="Enter your password"
-                required
-              />
-              <button
-                className={styles.showPassword}
-                type="button"
-                aria-label={showPassword ? 'Hide password' : 'Show password'}
-                aria-pressed={showPassword}
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? 'Hide' : 'Show'}
-              </button>
-            </div>
+                <div className={styles.field}>
+                  <div className={styles.passwordLabel}>
+                    <label htmlFor="aurex-password">Password</label>
+                    <button type="button" onClick={() => setMessage('Password reset is not available in this preview.')}>
+                      Forgot password?
+                    </button>
+                  </div>
+                  <div className={styles.passwordInput}>
+                    <input id="aurex-password" name="password" type={showPassword ? 'text' : 'password'} autoComplete="current-password" placeholder="Enter your password" required />
+                    <button
+                      className={styles.showPassword}
+                      type="button"
+                      aria-label={showPassword ? 'Hide password' : 'Show password'}
+                      aria-pressed={showPassword}
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? 'Hide' : 'Show'}
+                    </button>
+                  </div>
+                </div>
+                <label className={styles.remember}>
+                  <input type="checkbox" name="remember" />
+                  <span>Remember me</span>
+                </label>
+              </>
+            )}
 
-            <label className={styles.remember}>
-              <input type="checkbox" name="remember" />
-              <span>Remember me</span>
-            </label>
-
-            <button className={styles.submit} type="submit">Log in</button>
+            <button className={styles.submit} type="submit">{isRegistering ? 'Create account' : 'Log in'}</button>
             <p className={styles.notice} role="status" aria-live="polite">{message}</p>
           </form>
-          <p className={styles.signup}>New to Aurex? <button type="button" onClick={() => setMessage('Account creation is not available in this preview.')}>Create an account</button></p>
+          <p className={styles.signup}>
+            {isRegistering ? 'Already have an account?' : 'New to Aurex?'}
+            <button type="button" onClick={() => changeMode(!isRegistering)}>
+              {isRegistering ? 'Log in' : 'Create an account'}
+            </button>
+          </p>
         </div>
       </section>
       <footer className={styles.footer}>© 2026 Aurex Rewards <span>Preview experience</span></footer>
